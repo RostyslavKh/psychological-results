@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Psychologist_result</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background: gainsboro">
+    <header class="header" id="start">
+      <div class="header-first-line">
+        <img class="logo-header" src="img/ru-w.svg" alt="logo" />
+        <div class="title-online-test">Онлайн тестування (база даних)</div>
+        <div class="authorization-section">
+          <form class="auth-form" id="auth-form">
+            <h2 class="auth-title">Авторизація</h2>
+            <input type="email" id="email" required />
+            <label for="email"> Email</label><br />
+            <input type="password" id="password" />
+            <label for="password"> Пароль</label><br />
+            <button type="submit" id="submit-auth" class="btn btn-success">Війти</button>
+          </form>
+          <div class="auth-success">Авторизация прошла успешно</div>
+        </div>
+        <!-- <div class="phone-number">
+          <div class="phone-first">+38 (093)</div>
+          <div class="phone-second">899 77 36</div>
+        </div> -->
+      </div>
+      <div class="header-second-line"></div>
+    </header>
+
+    <!-- <button class="load-results" id="load-result-from-database">Загрузка</button> -->
+    <div class="load-result-table"><!-- Место для размещения результатов --></div>
+    <div class="main-section">
+      <div class="test-result-selected">
+        <h2></h2>
+        <div class="selected-test"></div>
+      </div>
+      <div class="questions-answers"><!-- Тут будет расшифровка ответов --></div>
+    </div>
+
+    <script src="js/results.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>
