@@ -49,6 +49,8 @@ function databaseLoad(testsDataBase) {
       testSelected.innerHTML = `
           <p class="test-title"> Ключ клієнта: <span class="user-key">${testsDataBase[i].name}</span>  </p>
           <p class="test-title"> Дата теста: <span class="user-data">${testsDataBase[i].date}</span></p><hr>
+          
+          
           <p class='test-name'> ${testsDataBase[i].test1.testName}</p>
           <p> ${testsDataBase[i].test1.testResult || ''}</p><hr>
           <p class='test-name'> ${testsDataBase[i].test2.testName}</p>
@@ -60,8 +62,16 @@ function databaseLoad(testsDataBase) {
           <p class='test-name'> ${testsDataBase[i].test5.testName}</p>
           <p> ${testsDataBase[i].test5.testResult || ''}</p><hr>
           <p class='test-name'> ${testsDataBase[i].test6.testName}</p>
-          <p> ${testsDataBase[i].test6.testResult || ''}</p>
+          <p> ${testsDataBase[i].test6.testResult || ''}</p>                  
         `
+
+      try {
+        testSelected.innerHTML += `<p class='test-name'> ${testsDataBase[i].test7.testName}</p>
+        <p> ${testsDataBase[i].test7.testResult || ''}</p>`
+      } catch {
+        console.log('error')
+      }
+
       const testAnswersLoad = document.querySelectorAll('.test-name')
       for (let j = 0; j < testAnswersLoad.length; j++) {
         testAnswersLoad[j].addEventListener('click', () => {
@@ -114,6 +124,14 @@ function databaseLoad(testsDataBase) {
                 break
               }
               tableAnswersPlace.innerHTML = `<h2>${testsDataBase[i].test6.testName} - немає даних</h2>`
+              break
+            case 6:
+              if (testsDataBase[i].test7.answers) {
+                tableAnswersPlace.innerHTML =
+                  testsDataBase[i].test7.testName + tableAnswersRender(testsDataBase[i].test7.answers)
+                break
+              }
+              tableAnswersPlace.innerHTML = `<h2>${testsDataBase[i].test7.testName} - немає даних</h2>`
               break
           }
         })
