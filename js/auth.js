@@ -48,28 +48,14 @@ function databaseLoad(testsDataBase) {
       tableAnswersPlace.innerHTML = `<p> Тут будет расшифровка ответов</p>`
       testSelected.innerHTML = `
           <p class="test-title"> Ключ клієнта: <span class="user-key">${testsDataBase[i].name}</span>  </p>
-          <p class="test-title"> Дата теста: <span class="user-data">${testsDataBase[i].date}</span></p><hr>
-          
-          
-          <p class='test-name'> ${testsDataBase[i].test1.testName}</p>
-          <p> ${testsDataBase[i].test1.testResult || ''}</p><hr>
-          <p class='test-name'> ${testsDataBase[i].test2.testName}</p>
-          <p> ${testsDataBase[i].test2.testResult || ''}</p><hr>
-          <p class='test-name'> ${testsDataBase[i].test3.testName}</p>
-          <p> ${testsDataBase[i].test3.testResult || ''}</p><hr>
-          <p class='test-name'> ${testsDataBase[i].test4.testName}</p>
-          <p> ${testsDataBase[i].test4.testResult || ''}</p><hr>  
-          <p class='test-name'> ${testsDataBase[i].test5.testName}</p>
-          <p> ${testsDataBase[i].test5.testResult || ''}</p><hr>
-          <p class='test-name'> ${testsDataBase[i].test6.testName}</p>
-          <p> ${testsDataBase[i].test6.testResult || ''}</p>                  
-        `
+          <p class="test-title"> Дата теста: <span class="user-data">${testsDataBase[i].date}</span></p><hr>`
 
-      try {
-        testSelected.innerHTML += `<p class='test-name'> ${testsDataBase[i].test7.testName}</p>
-        <p> ${testsDataBase[i].test7.testResult || ''}</p>`
-      } catch {
-        console.log('error')
+      for (let key in testsDataBase[i]) {
+        // console.log(key, key.includes('test'))
+        if (key.includes('test')) {
+          testSelected.innerHTML += `<p class='test-name'> ${testsDataBase[i][key].testName}</p>
+          <p> ${testsDataBase[i][key].testResult || ''}</p><hr>`
+        }
       }
 
       const testAnswersLoad = document.querySelectorAll('.test-name')

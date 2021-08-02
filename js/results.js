@@ -75,7 +75,7 @@ let baseResult, testsDataBase
   })
 }) */
 
-function databaseLoad() {
+/* function databaseLoad() {
   baseResult = TestResults.get('GET', requestURL).then((response) => {
     testsDataBase = response ? Object.keys(response).map((key) => ({ ...response[key], id: key })) : []
     // console.log('внешние данные', testsDataBase)
@@ -87,20 +87,14 @@ function databaseLoad() {
         tableAnswersPlace.innerHTML = `<p> Тут будет расшифровка ответов</p>`
         testSelected.innerHTML = `
           <p class="test-title"> Ключ клієнта: <span class="user-key">${testsDataBase[i].name}</span>  </p>
-          <p class="test-title"> Дата теста: <span class="user-data">${testsDataBase[i].date}</span></p><hr>
-          <p class='test-name'> ${testsDataBase[i].test1.testName}</p>
-          <p> ${testsDataBase[i].test1.testResult || ''}</p><hr>
-          <p class='test-name'> ${testsDataBase[i].test2.testName}</p>
-          <p> ${testsDataBase[i].test2.testResult || ''}</p><hr>
-          <p class='test-name'> ${testsDataBase[i].test3.testName}</p>
-          <p> ${testsDataBase[i].test3.testResult || ''}</p><hr>
-          <p class='test-name'> ${testsDataBase[i].test4.testName}</p>
-          <p> ${testsDataBase[i].test4.testResult || ''}</p><hr>  
-          <p class='test-name'> ${testsDataBase[i].test5.testName}</p>
-          <p> ${testsDataBase[i].test5.testResult || ''}</p><hr>
-          <p class='test-name'> ${testsDataBase[i].test6.testName}</p>
-          <p> ${testsDataBase[i].test6.testResult || ''}</p>
-        `
+          <p class="test-title"> Дата теста: <span class="user-data">${testsDataBase[i].date}</span></p><hr>`
+        testsDataBase[i].forEach(test, () => {
+          if (typeof test == 'object') {
+            testSelected.innerHTML += `<p class='test-name'> ${test.testName}</p>
+              <p> ${test.testResult || ''}</p><hr>`
+          }
+        })
+
         const testAnswersLoad = document.querySelectorAll('.test-name')
         for (let j = 0; j < testAnswersLoad.length; j++) {
           testAnswersLoad[j].addEventListener('click', () => {
@@ -242,4 +236,4 @@ function tableAnswersRenderDepression(answers) {
   html += `</table>`
 
   return html
-}
+} */
